@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Battleship</title>
+    <script src="main.js" defer></script>
+  </head>
+  <body>
+    <div class="container backdrop-blur">
+      <div class="header">
+        <p id="header" style="font-size: 56px; font-weight: 900">BATTLESHIP</p>
+        <p id="desc">A simple battleship game!</p>
+      </div>
+      <div class="content">
+        <div class="alliedForces"></div>
+        <div class="enemyForces"></div>
+      </div>
+      <div class="footer">
+        <a href="https://github.com/owlbeard"
+          ><img id="footer-logo" src="./assets/github.svg" alt="Github Logo"
+        /></a>
+        <p id="footer-text">Tüm Hakları Saklıdır © 2023 || owlbeard</p>
+      </div>
+    </div>
+    <div class="formContainer opened">
+      <div class="setBoard">
+        <h4 id="setBoardHeader">Place Your Battleships!</h4>
+        <button id="rotate">Rotate</button>
+        <div class="shipPlacement">
+          <div class="setForces"></div>
+        </div>
+        <button id="ready">Ready</button>
+      </div>
+    </div>
+  </body>
+</html>
