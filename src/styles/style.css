@@ -29,9 +29,21 @@ body {
 .content {
   flex-grow: 1;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 128px;
+  gap: 24px;
+}
+
+.boards {
+  display: flex;
+  gap: 24px;
+}
+
+.names {
+  width: 1028px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .footer {
@@ -124,4 +136,37 @@ body {
 
 .hit {
   background-color: red;
+}
+
+.enemyMiss {
+  background-color: aqua;
+}
+
+.enemyHit {
+  background-color: red;
+}
+
+#setBoardHeader {
+  font-size: 48px;
+  margin: 0;
+}
+
+#rotate,
+#ready {
+  padding: 8px;
+  border: 0;
+  border-radius: 12px;
+}
+
+#rotate:active,
+#ready:active {
+  transform: translateY(4px);
+}
+
+#rotate {
+  background: #83b2d0;
+}
+
+#ready {
+  background: #95dab6;
 }

@@ -16,10 +16,8 @@ let axis = 'x';
 let shipsPlaced = 0;
 let shipNumber = 4;
 let ships = [];
-let alliedCoords = [];
 let enemyShips = [];
 let enemyCoords = [];
-let turn = false;
 
 function boardMaker(n, container, type) {
   for (let i = 0; i < n ** 2; i++) {
@@ -142,17 +140,32 @@ function aIShoot() {
   let cellSelector = document.querySelector(`[data-index="${uniqueNum(99)}"]`);
   if (cellSelector.classList.contains('placed')) {
     cellSelector.classList.remove('placed');
-    cellSelector.classList.add('hit');
-  } else cellSelector.classList.add('miss');
+    cellSelector.classList.add('enemyHit');
+  } else cellSelector.classList.add('enemyMiss');
+}
+
+function play(e) {
+  let index = Number(e.target.getAttribute('data-enemy'));
+  if (enemyCoords.includes(index)) {
+    e.target.classList.add('hit');
+  } else e.target.classList.add('miss');
+  stop();
+  aIShoot();
 }
 
 const enemyForcesAll = Array.from(document.querySelectorAll('[data-enemy]'));
 for (let i = 0; i < enemyForcesAll.length; i++) {
-  enemyForcesAll[i].addEventListener('click', (e) => {
-    let index = Number(e.target.getAttribute('data-enemy'));
-    if (enemyCoords.includes(index)) {
-      e.target.classList.add('hit');
-    } else e.target.classList.add('miss');
-    aIShoot();
-  });
+  enemyForcesAll[i].addEventListener('click', play);
+}
+
+function stop() {
+  let hit = Array.from(document.querySelectorAll('.hit'));
+  let enemyHit = Array.from(document.querySelectorAll('.hit'));
+  if (hit.length == 17 || enemyHit.length == 17) {
+    for (let i = 0; i < enemyForcesAll.length; i++) {
+      enemyForcesAll[i].removeEventListener('click', play);
+    }
+    if (hit.length == 17) alert('CONGRATS YOU HAVE WON');
+    else alert("TOO BAD YOU'VE LOST :(");
+  }
 }
